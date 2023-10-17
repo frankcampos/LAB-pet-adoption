@@ -254,7 +254,7 @@ const pets = [
       <p class="card-text">${pet.color}</p>
       <a href="#" class="card-link">${pet.specialSkill}</a>
       <a href="#" class="card-link">${pet.type}</a>
-      <img src=${pet.imageUrl} alt="Italian Trulli" >
+      <img src=${pet.imageUrl} alt="Italian Trulli" width="200" height="250" style="display:block; margin-left:auto; margin-right:auto;">
     </div>
   </div>`
   }

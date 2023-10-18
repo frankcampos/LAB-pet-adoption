@@ -242,21 +242,58 @@ const pets = [
   ];
 
 
-  const app = document.querySelector('#app');
+  
 
-  let domString ='';
+  
+  
+  const renderToDom = (array) => {
 
-  for(let pet of pets){
+    // Create our domstring so we can push our cards to it
+    let domString = ""
+    // Loop over the array and create our pie cards
+    for(let object of array){
+  
     domString += `<div class="card" style="width: 18rem;">
     <div class="card-body">
-    <h6 class="card-subtitle mb-2 text-body-secondary">${pet.name}</h6>
-    <img src=${pet.imageUrl} alt="Italian Trulli" width="200" height="250" style="display:block; margin-left:auto; margin-right:auto;">
-    <h5 class="card-title">${pet.id}</h5>
-      <p class="card-text">${pet.color}</p>
-      <h5 href="#" class="card-link">${pet.specialSkill}</h5>
-      <footer  href="#" class="card-link">${pet.type}</footer>
+    <h6 class="card-subtitle mb-2 text-body-secondary">${object.name}</h6>
+    <img src=${object.imageUrl} alt="Italian Trulli" width="200" height="250" style="display:block; margin-left:auto; margin-right:auto;">
+    <h5 class="card-title">${object.id}</h5>
+      <p class="card-text">${object.color}</p>
+      <h5 href="#" class="card-link">${object.specialSkill}</h5>
+      <footer  href="#" class="card-link">${object.type}</footer>
     </div>
   </div>`
   }
-
+  const app = document.querySelector('#app');
   app.innerHTML = domString
+}
+
+renderToDom(pets)
+
+// Now let's make our dogButton  work!
+// Select our HTML button
+const dogButton = document.querySelector("#dog")
+
+// Create our function to filter out our pets types
+const filter = () => {
+    // Create an empty array to hold our pets dogs 
+    // Just like we created our empty string to hold our cards!
+    let dogsArray= []
+
+    // Loop over that pie arrray
+    for(let pet of pets){
+        // Check to see if the pet is a dog
+        if(pet.type === 'dog'){
+            // If it is push it into our pie array
+            dogsArray.push(pet);
+        }
+    }
+
+    // Now we can use our handy dandy function to render our new dog array to our page!
+    renderToDom(dogsArray)
+}
+
+// Add an event listener to our button
+// This will listen for us to click our button
+// On click it will invoke our filter function
+dogButton.addEventListener('click', filter);

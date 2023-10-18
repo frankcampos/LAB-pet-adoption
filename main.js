@@ -246,15 +246,15 @@ const pets = [
 
   let domString ='';
 
-  for(pet of pets){
+  for(let pet of pets){
     domString += `<div class="card" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-title">${pet.id}</h5>
-      <h6 class="card-subtitle mb-2 text-body-secondary">${pet.name}</h6>
+    <h6 class="card-subtitle mb-2 text-body-secondary">${pet.name}</h6>
+    <img src=${pet.imageUrl} alt="Italian Trulli" width="200" height="250" style="display:block; margin-left:auto; margin-right:auto;">
+    <h5 class="card-title">${pet.id}</h5>
       <p class="card-text">${pet.color}</p>
       <h5 href="#" class="card-link">${pet.specialSkill}</h5>
-      <h5 href="#" class="card-link">${pet.type}</h5>
-      <img src=${pet.imageUrl} alt="Italian Trulli" width="200" height="250" style="display:block; margin-left:auto; margin-right:auto;">
+      <footer  href="#" class="card-link">${pet.type}</footer>
     </div>
   </div>`
   }

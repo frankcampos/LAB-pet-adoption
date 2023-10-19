@@ -297,3 +297,55 @@ const filter = () => {
 // This will listen for us to click our button
 // On click it will invoke our filter function
 dogButton.addEventListener('click', filter);
+
+const catButton = document.querySelector("#cat")
+
+// Create our function to filter out our pets types
+const filter2 = () => {
+    // Create an empty array to hold our pets dogs 
+    // Just like we created our empty string to hold our cards!
+    let catsArray= []
+
+    // Loop over that pie arrray
+    for(let pet of pets){
+        // Check to see if the pet is a dog
+        if(pet.type === 'cat'){
+            // If it is push it into our pie array
+            catsArray.push(pet);
+        }
+    }
+
+    // Now we can use our handy dandy function to render our new dog array to our page!
+    renderToDom(catsArray)
+}
+
+// Add an event listener to our button
+// This will listen for us to click our button
+// On click it will invoke our filter function
+catButton.addEventListener('click', filter2);
+
+const dinoButton = document.querySelector("#dino")
+
+// Create our function to filter out our pets types
+const filter3 = () => {
+    // Create an empty array to hold our pets dogs 
+    // Just like we created our empty string to hold our cards!
+    let dinosArray= []
+
+    // Loop over that pie arrray
+    for(let pet of pets){
+        // Check to see if the pet is a dog
+        if(pet.type === 'dino'){
+            // If it is push it into our pie array
+            dinosArray.push(pet);
+        }
+    }
+
+    // Now we can use our handy dandy function to render our new dog array to our page!
+    renderToDom(dinosArray)
+}
+
+// Add an event listener to our button
+// This will listen for us to click our button
+// On click it will invoke our filter function
+dinoButton.addEventListener('click', filter3);

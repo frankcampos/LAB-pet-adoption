@@ -240,8 +240,27 @@ const pets = [
       imageUrl: "https://images.pexels.com/photos/1216482/pexels-photo-1216482.jpeg?auto=compress&cs=tinysrgb&w=1600"
     }
   ];
-
+// selected all the card or app
   const app = document.querySelector('#app');
+
+  // create the function that delete the card pet
+  const deletePet = (event) => {
+    // if we find the button or element withe id delete do the next part
+    if(event.target.id.includes("delete")){
+      // save only the number of the id 
+      const [,id] =event.target.id.split("--")
+// using the findIndex method we compare the the real id with the clicked button id 
+      const index =pets.findIndex(obj => obj.id ===Number(id));
+// delete the card with the splice method using the index that contain the real index of the object 
+      pets.splice(index,1)
+// refresh the cards without the deleted cards 
+      renderToDom(pets);
+
+
+    }
+  }
+
+  app.addEventListener('click',deletePet);
   
 
   
@@ -260,7 +279,8 @@ const pets = [
     
       <p class="card-text">${object.color}</p>
       <h5 href="#" class="card-link">${object.specialSkill}</h5>
-      <footer  href="#" class="card-link" style="background-color:blue;">${object.type}</footer>
+      <button class="btn" id ="delete--${object.id}">Delete</button>
+      <footer  href="#" class=" blue card-link" style="background-color:lightgreen;">${object.type}</footer>
     </div>
   </div>`
   }
@@ -366,7 +386,7 @@ const createPet = (e) => {
 
   };
 
-  pets.push(newPetObject);
+  pets.unshift(newPetObject);
   renderToDom(pets);
   form.reset();
 };

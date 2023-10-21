@@ -271,8 +271,22 @@ const pets = [
     let domString = ""
     // Loop over the array and create our pie cards
     for(let object of array){
+      let footerBackgroundColor;
+        switch (object.type) {
+            case 'dog':
+                footerBackgroundColor = 'lightgreen';
+                break;
+            case 'cat':
+                footerBackgroundColor = 'lightblue';
+                break;
+            case 'dino':
+                footerBackgroundColor = 'lightyellow';
+                break;
+            default:
+                footerBackgroundColor = 'lightgray';
+        }
   
-    domString += `<div class="card" style="width: 18rem;">
+    domString += `<div class="card " style="width: 18rem;">
     <div class="card-body">
     <h6 class="card-subtitle mb-2 text-body-secondary">${object.name}</h6>
     <img src=${object.imageUrl} alt="Italian Trulli" width="200" height="250" style="display:block; margin-left:auto; margin-right:auto;">
@@ -280,7 +294,7 @@ const pets = [
       <p class="card-text">${object.color}</p>
       <h5 href="#" class="card-link">${object.specialSkill}</h5>
       <button class="btn" id ="delete--${object.id}">Delete</button>
-      <footer  href="#" class=" blue card-link" style="background-color:lightgreen;">${object.type}</footer>
+      <footer  href="#" class="card-link" style="background-color:${footerBackgroundColor}" >${object.type}</footer>
     </div>
   </div>`
   }
@@ -289,6 +303,7 @@ const pets = [
 }
 
 renderToDom(pets)
+
 
 // Now let's make our dogButton  work!
 // Select our HTML button

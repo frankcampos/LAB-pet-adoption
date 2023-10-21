@@ -241,7 +241,7 @@ const pets = [
     }
   ];
 
-
+  const app = document.querySelector('#app');
   
 
   
@@ -257,14 +257,14 @@ const pets = [
     <div class="card-body">
     <h6 class="card-subtitle mb-2 text-body-secondary">${object.name}</h6>
     <img src=${object.imageUrl} alt="Italian Trulli" width="200" height="250" style="display:block; margin-left:auto; margin-right:auto;">
-    <h5 class="card-title">${object.id}</h5>
+    
       <p class="card-text">${object.color}</p>
       <h5 href="#" class="card-link">${object.specialSkill}</h5>
-      <footer  href="#" class="card-link">${object.type}</footer>
+      <footer  href="#" class="card-link" style="background-color:blue;">${object.type}</footer>
     </div>
   </div>`
   }
-  const app = document.querySelector('#app');
+  
   app.innerHTML = domString
 }
 
@@ -349,3 +349,26 @@ const filter3 = () => {
 // This will listen for us to click our button
 // On click it will invoke our filter function
 dinoButton.addEventListener('click', filter3);
+
+
+const form = document.querySelector('form');
+
+const createPet = (e) => {
+  e.preventDefault();
+
+  const newPetObject = {
+    id : pets.length +1,
+    name :document.querySelector("#name").value,
+    color :document.querySelector("#color").value,
+    specialSkill : document.querySelector("#special-skill").value,
+    type: document.querySelector("#type").value,
+    imageUrl : document.querySelector("#image").value,
+
+  };
+
+  pets.push(newPetObject);
+  renderToDom(pets);
+  form.reset();
+};
+
+form.addEventListener('submit',createPet);
